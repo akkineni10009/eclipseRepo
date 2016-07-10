@@ -38,6 +38,7 @@ public class DivideAndConquer {
 			
 			else
 			{
+				System.out.println(); 
 				OverallMinMax.min=input[end];
 				OverallMinMax.max=input[start];
 			}
