@@ -7,7 +7,7 @@ public class FindMeanMedianMode {
 	
 	static ArrayList<Integer> input = new ArrayList<Integer>();
 	
-	protected FindMeanMedianMode()
+	protected FindMeanMedianMode() 
 	{
 		
 	}
@@ -16,6 +16,7 @@ public class FindMeanMedianMode {
 	{
 		/*System.out.println("Enter the values Enter ';' to terminate");
 		Scanner sc = new Scanner(System.in);
+
 		
 		while(sc.nextInt()!=0){
 			input.add(sc.nextInt());
