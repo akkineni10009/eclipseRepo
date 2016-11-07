@@ -1,6 +1,10 @@
+import java.util.Scanner;
+
 public class DivideAndConquer {
 	
-	public static int[] input= {25,34,67,87,36,54,101,45,30,32};
+	//public static int[] input= {25,34,67,87,36,54,101,45,30,32};
+	public static int[] input;
+	static Scanner sc = new Scanner(System.in);
 	
 	public DivideAndConquer()
 	{
@@ -9,6 +13,15 @@ public class DivideAndConquer {
 
 	public static void main(String[] args)
 	{
+		
+		System.out.println("Enter the number of elements");
+		int size=sc.nextInt();
+		input=new int[size];
+		System.out.println("Enter the elements");
+		for(int i=0;i<size;i++)
+		{
+			input[i]=sc.nextInt();
+		}
 		MinMax output = getMinMAx(input,0,input.length-1);
 		System.out.println(output.min+"******"+output.max);
 		
