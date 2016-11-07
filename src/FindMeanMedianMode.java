@@ -15,9 +15,7 @@ public class FindMeanMedianMode {
 	public static void main(String[] args)
 	{
 		/*System.out.println("Enter the values Enter ';' to terminate");
-		Scanner sc = new Scanner(System.in);
-
-		
+		Scanner sc = new Scanner(System.in);		
 		while(sc.nextInt()!=0){
 			input.add(sc.nextInt());
 		}*/
