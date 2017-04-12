@@ -1,5 +1,6 @@
 package LinkedList;
 
+
 public class HelloWorld{
     
     public static Node start = null;
@@ -19,13 +20,18 @@ public class HelloWorld{
         printList(start);
         System.out.println("*****************************");
         
-        deleteNode(1);
-        printList(start);
-        System.out.println("*****************************");
+        //reverseList();
+        //printList(start);
         
-        sortList();
-        printList(start);
+        //deleteNode(1);
+        //printList(start);
+        //System.out.println("*****************************");
         
+        //sortList();
+        //printList(start);
+        
+      sort();
+      printList(start);
      }
      
      public static void insertBeginning(int data)
@@ -83,6 +89,42 @@ public class HelloWorld{
         
             previous_node.setNext(current_node.getNext());
         }
+    }
+    
+    public static void reverseList()
+    {
+      Node current=start,next=null,previous=null;
+      for(;current!=null;)
+      {
+       /* current=next;
+        next=next.getNext();
+        current.setNext(previous);
+        previous=current;*/
+        next=current.getNext();
+        current.setNext(previous);
+        previous=current;
+        current=next;
+      }
+      start=previous;
+    }
+    
+    public static void sort()
+    {
+      Node temp_length=start,i=start,j=start;
+      int length=0,current,next,temp;
+      for(i=start;i.getNext()!=null;i=i.getNext())
+      {
+        for(j=start;j.getNext()!=null;j=j.getNext())
+        {
+          if((j.getNext()).getData() > j.getData())
+          {
+            //Swap both the values
+            temp=(j.getNext()).getData();
+            (j.getNext()).setData(j.getData());
+            j.setData(temp);
+          }
+        }
+      }
     }
     
     public static void sortList()
