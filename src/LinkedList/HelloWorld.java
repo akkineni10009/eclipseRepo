@@ -12,15 +12,16 @@ public class HelloWorld{
         * */
         insertBeginning(1);
         insertBeginning(2);
-        insertBeginning(3);
-        insertBeginning(4);
-        insertBeginning(5); 
+        insertBeginning(7);
+        insertBeginning(5);
+        insertBeginning(9); 
         
-        insertAt(3,8);
-        printList(start);
-        System.out.println("*****************************");
+        //insertAt(3,8);
+        //printList(start);
+        //System.out.println("*****************************");
         
         //reverseList();
+        //reverse();
         //printList(start);
         
         //deleteNode(1);
@@ -30,8 +31,8 @@ public class HelloWorld{
         //sortList();
         //printList(start);
         
-      sort();
-      printList(start);
+        sort();
+        printList(start);
      }
      
      public static void insertBeginning(int data)
@@ -91,21 +92,34 @@ public class HelloWorld{
         }
     }
     
-    public static void reverseList()
+    /*public static void reverseList()
     {
       Node current=start,next=null,previous=null;
       for(;current!=null;)
       {
-       /* current=next;
+        current=next;
         next=next.getNext();
         current.setNext(previous);
-        previous=current;*/
+        previous=current;
         next=current.getNext();
         current.setNext(previous);
         previous=current;
         current=next;
       }
       start=previous;
+    }*/
+    
+    public static void reverse()
+    {
+      Node prev=null,current=start,next=current.next;
+      while(current.next!=null)
+      {
+        next=current.next;
+        current.next=prev;
+        prev=current;
+        current=next; 
+      }
+      start=prev;
     }
     
     public static void sort()
@@ -129,7 +143,6 @@ public class HelloWorld{
     
     public static void sortList()
     {
-        Node length_temp=start;
         Node previous= start;
         Node next= start.getNext();
         
@@ -153,4 +166,5 @@ public class HelloWorld{
             printList(start);
         }
     }
+    
 }

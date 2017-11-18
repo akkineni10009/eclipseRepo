@@ -1,6 +1,9 @@
 package Queues;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class SimpleQueue {
 
@@ -9,6 +12,7 @@ public class SimpleQueue {
   static int front=0;
   static int rear=0;
   static ArrayList<Object> queue= new ArrayList<Object>(size);
+  static Queue<Integer> a = new LinkedList<Integer>();
   public SimpleQueue(int size)
   {
     //this.size=size;
@@ -104,5 +108,7 @@ public class SimpleQueue {
     insert(60);
     display();
     
+    a.add(10);
+    Iterator itr=a.iterator();
   }
 }

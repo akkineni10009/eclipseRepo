@@ -1,9 +1,9 @@
 package Graphs;
 
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.Stack;
 
-public class BFS {
+public class WorkingDFS {
+
   public static void main(String[] args) {
     int[][] matrix = {
             // 1 2 3 4 5 6 7 8 9 10
@@ -20,29 +20,39 @@ public class BFS {
     };
     boolean [] visited = new boolean[10];
 
-    bfs(0, matrix, visited);
+    dfs(0, matrix, visited);
   }
   
-  public static void bfs(int i, int[][] matrix, boolean[] visited) {
-    Queue<Integer> queue = new LinkedList<Integer>();
-    queue.add(i);
+  public static void dfs(int i, int[][] matrix, boolean[] visited) {
+    // DFS can also be used to detect a cycle in the graph
+    // If we reach a vertex that is already in the recursion stack, then there is a cycle in the tree 
+  
+    Stack<Integer> stack = new Stack<Integer>();
+    stack.add(i);
+    visited[i]=true;
+    System.out.println(i);
     
-    while(!queue.isEmpty())
+    while(!stack.isEmpty())
     {
-      int element=queue.remove();
-      visited[element]=true;
-      System.out.println(element);
-      
+      int element=stack.peek();
       int j=0;
       while(j<matrix.length)
       {
         if(matrix[element][j]==1 && !visited[j])
         {
-            queue.add(j);
+          stack.add(j);
+          visited[j]=true;
+          System.out.println(j);
+          // Add all the adjacent vertices to the stack 
+          element=j;
+          j=0;
+          
+          //break;
         }
         j++;
       }
-      
+      // Once it reaches a dead end it backtracks i.e the pop operation is performed on the stack 
+      stack.pop();
     }
   }
   
