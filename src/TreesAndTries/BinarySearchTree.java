@@ -1,102 +1,96 @@
 package TreesAndTries;
 
 public class BinarySearchTree {
- 
-  public static void main(String[] args)
-  {
-    Node root = new Node(2);
-    insert(root,1);
-    insert(root,3);
-    //inOrder(root);
-    preOrder(root);
-    search(root,1);
+  static Node root;
+  public static void main(String[] args){
+    root=insertDriver(2);
+    root=insertDriver(1);
+    root=insertDriver(3);
+    root=insertDriver(6);
+    root=insertDriver(4);
+    root=insertDriver(5);
+    // inOrder(root);
+    /*search(root,1);
     search(root,4);
     search(root,0);
     search(root,2);
-    search(root,3);
+    search(root,3);*/
+    int result=inOrderSuccessor(root,root.right.right.left.right);
+    System.out.println(result);
   }
   
-  public static void insert(Node root, int value)
-  {
-    Node new_node = new Node(value);
-   
-    if(value<=root.data)
-    {
-      if(root.left==null)
-      {
-        root.left=new_node;
-      }
-      else
-      {
-        insert(root.left,value);
-      }
+  public static Node  insertDriver(int value){
+    root=insertInBST(root, value);
+    return root;
+  }
+  
+  public static Node insertInBST(Node root,int value){
+    if(root==null){
+      root=new Node(value);
+      return root;
     }
+    else if(value<=root.data){
+      root.left=insertInBST(root.left,value);
+    }
+    else{ 
+      root.right=insertInBST(root.right,value);
+    }
+    return root;
+  }
+  
+  public static void inOrder(Node root){
+    if(root==null){
+       return ;
+    }
+    inOrder(root.left);
+    System.out.println(root.data);
+    inOrder(root.right);
+  }
+  
+  public static void search(Node root,int value){
+    if(root==null){
+      System.out.println("Not Found");
+      return ;
+    }
+    if(value==root.data){
+      System.out.println("Found");
+      return ;
+    }
+    else if(value<=root.data){
+      search(root.left,value);
+    }
+    else{
+      search(root.right,value);
+    }
+  }
+  
+  public static int findMin(Node root){
+    if(root==null){
+      return Integer.MAX_VALUE;
+    }
+    int left=findMin(root.left);
+    int right=findMin(root.right);
     
-    else
-    {
-      if(root.right==null)
-      {
-        root.right=new_node;
-      }
-      else
-      {
-        insert(root.right,value);
-      }
-    }
-
+    return Math.min(root.data, Math.min(left, right));
   }
-  
-  public static void inOrder (Node root)
-  {
-    if(root!=null)
-    {
-      inOrder(root.left);
-      System.out.println(root.data);
-      inOrder(root.right);
+  public static int inOrderSuccessor(Node root,Node node){
+    int successor=root.data;
+    if(node.right!=null){
+     successor= findMin(node.right);
+     return successor;
     }
-  }
-  
-  public static void preOrder (Node root)
-  {
-    if(root!=null)
-    {
-      System.out.println(root.data);
-      inOrder(root.left);
-      inOrder(root.right);
-    }
-  }
-  
-  public static void search(Node root,int value)
-  {
-    if(root.data==value)
-    {
-      //return true;
-      System.out.println("Found " + value);
-    }
-    
-    else if(value<root.data)
-    {
-        if(root.left==null)
-        {
-          //return false;
-        }
-        else
-        {
-          search(root.left,value);
-        }
-    }
-    
-    else
-    {
-      if(root.right==null)
-      {        //return false;
+    while(root!=null){
+      if(root.data==node.data){
+        break;
       }
-      
-      else
-      {
-        search(root.right,value);
+      else if(node.data<root.data){
+        successor=root.data;
+        root=root.left;
+      }
+      else{
+        root=root.right;
       }
     }
+    return successor;
   }
-  
 }
