@@ -6,7 +6,6 @@ public class LongestIncreasingSubSequence {
 
   public static int nums[] = {5,6,2,3,4,1,9,9,8,9,5};
   public static int lis[] = new int[nums.length];
-  //public static ArrayList<Integer> actualVal = new ArrayList<Integer>();
   
   public static void main(String[] args)
   {
@@ -41,10 +40,6 @@ public class LongestIncreasingSubSequence {
     }
     
     System.out.println(max_lis );
-    
-    /*for(int i: actualVal)
-    {
-      System.out.println(i);
-    }*/
+   
   }
 }

@@ -5,7 +5,7 @@ import java.util.HashMap;
 public class StringCompression {
   
   static String output="";
-  static String input="aabbbcddq";
+  static String input="aaabbcaaddd";
   static HashMap<Character,Integer> map = new HashMap<Character,Integer>();
   
   public static void main (String[] args)
@@ -38,10 +38,11 @@ public class StringCompression {
   public static void stringCompression2()
   {
     char testItem =input.charAt(0);
-    char key;
+    char key = 0;
     int count=1;
+    int i=1;
     
-    for(int i=1;i<input.length();i++)
+    for(;i<input.length();i++)
     {
       
       key= input.charAt(i);
@@ -54,14 +55,13 @@ public class StringCompression {
       {
         output+=testItem+String.valueOf(count);
         count=1;
-        
-        if(i==input.length()-1)
-        {
-          output+=key+String.valueOf(count);
-        }
       }
       
       testItem=key;
+    }
+    if(i==input.length())
+    {
+      output+=key+String.valueOf(count);
     }
     
     System.out.println(output);

@@ -3,7 +3,7 @@ package javaRevisited.Strings;
 public class CheckIfStringContainsAnotherString {
   
   static String m="abcdefabfcdeabc";
-  static String n="abd";
+  static String n="abf";
   public static void main(String[] args){
     checkIfStringContainsAnotherString();
   }

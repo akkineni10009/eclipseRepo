@@ -33,14 +33,12 @@ public class BFS {
       visited[element]=true;
       System.out.println(element);
       
-      int j=0;
-      while(j<matrix.length)
+      for(int j=0;j<matrix.length;j++)
       {
         if(matrix[element][j]==1 && !visited[j])
         {
             queue.add(j);
         }
-        j++;
       }
       
     }

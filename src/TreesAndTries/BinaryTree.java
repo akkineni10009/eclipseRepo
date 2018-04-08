@@ -86,7 +86,8 @@ public class BinaryTree {
       return;
     }
     inOrder(root.left);
-    System.out.println(root.getData());
+    // CALL FUNCTION HERE TO CHECK DUPLICATE
+    //System.out.println(root.getData());
     inOrder(root.right);
   }
   

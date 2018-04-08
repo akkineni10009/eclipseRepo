@@ -10,11 +10,12 @@ public class HelloWorld{
         //System.out.println("Hello World");
        /*hello
         * */
-        insertBeginning(1);
-        insertBeginning(2);
-        insertBeginning(7);
         insertBeginning(5);
-        insertBeginning(9); 
+        insertBeginning(4);
+        insertBeginning(3);
+        insertBeginning(2);
+        insertBeginning(1); 
+        insertBeginning(8);
         
         //insertAt(3,8);
         //printList(start);
@@ -31,8 +32,28 @@ public class HelloWorld{
         //sortList();
         //printList(start);
         
-        sort();
+        // sort();
+        removeNodes(3);
         printList(start);
+     }
+     
+     public static Node removeNodes(int x){
+       Node current = start, previous=null;
+       if(current.getData()>x){
+         start=start.getNext();
+         previous=current;
+         current=current.getNext();
+       }
+       while(current!=null){
+         if(current.getData()>x){
+           previous.setNext(current.getNext());
+         }
+         else {
+           previous=previous.getNext();
+         }
+         current=current.getNext();
+       }
+       return start;
      }
      
      public static void insertBeginning(int data)

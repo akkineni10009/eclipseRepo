@@ -3,6 +3,8 @@ package javaRevisited.Strings;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 public class FirstNonRepeatedCharacterInAString {
   /*
@@ -47,6 +49,25 @@ public class FirstNonRepeatedCharacterInAString {
     }
     else{
       System.out.println("There is no non repeating character");
+    }
+  }
+  
+  public static char firstNonRepeatedCharacterInAStringOptimized(){
+    SortedSet set = new TreeSet<Character>();
+    for(int i=0;i<input.length();i++){
+      char key=input.charAt(i);
+      if(!set.contains(key)){
+        set.add(key);
+      }
+      else{
+        set.remove(key);
+      }
+    }
+    if(!set.isEmpty()){
+       return (char) set.first(); 
+    }
+    else{
+      return 'N';
     }
   }
 }
